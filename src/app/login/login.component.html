@@ -1,0 +1,31 @@
+<mat-card class="mt-35">
+    <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h2>Log In</h2>
+            <mat-error *ngIf="showEmail">
+                Please Enter Email to Reset Password
+            </mat-error>
+            <mat-form-field class="full-width-input">
+                <input matInput placeholder="Email" type="email" (ngModelChange)="showEmail = false" formControlName="username" required>
+                <mat-error *ngIf="username.invalid && username.touched">
+                    Please Provide a Valid Email Address
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input mt-3">
+                <input matInput type="password" placeholder="Password" formControlName="password" required>
+                <mat-error *ngIf="password.invalid && password.touched">
+                    Please Provide a Valid Password
+                </mat-error>
+            </mat-form-field>
+            <div class="text-left mt-3">
+                <a class="pointer text-dark-purple text-left fw-500" (click)="forgotPassword()">Forgot Password?</a>
+            </div>
+            <button mat-raised-button [disabled]="loginForm.invalid" class="mt-6" color="primary">Login</button>
+            <div class="d-flex justify-content-center mt-2">
+                <a class="d-block text-center">Don`t have an Account?</a>
+                <a routerLink="register" class="pointer text-dark-purple ml-2 fw-500">Register</a>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+    

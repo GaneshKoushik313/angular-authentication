@@ -1,0 +1,13 @@
+<mat-card class="mt-40">
+    <mat-card-content>
+        <h3>Please Enter One Time Password sent to your Mobile Number ********540</h3>
+        <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:4}"></ng-otp-input>
+        <mat-error class="fw-500 mt-1 text-center d-block">
+            OTP is Incorrect Please Check
+        </mat-error>
+        <div class="d-flex justify-content-between container mt-3">
+            <a class="text-dark-purple fw-500 d-block ml-14 pointer">Resend Otp</a>
+            <span class="text-red fw-500 mr-14" [ngClass]="{'blink':timer <= 3}">Expires In: {{timer}}:00</span>
+        </div>
+    </mat-card-content>
+</mat-card>
