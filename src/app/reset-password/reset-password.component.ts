@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router'
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
@@ -8,10 +9,10 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 })
 export class ResetPasswordComponent implements OnInit {
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     forgotPassword = new FormGroup({
-        email : new FormControl('',[Validators.required]),
+        email : new FormControl('ganeshkoushik@gmail.com',[Validators.required]),
         password : new FormControl('',[Validators.required]),
         confirmPassword : new FormControl('',[Validators.required])
     })
@@ -29,7 +30,7 @@ export class ResetPasswordComponent implements OnInit {
     }
 
     onSubmit(){
-        
+        this.router.navigate([''])
     }
 
   ngOnInit(): void {
