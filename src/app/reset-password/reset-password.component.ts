@@ -12,7 +12,8 @@ export class ResetPasswordComponent implements OnInit {
 
     constructor(private router: Router) { }
 
-    password_incorrect = false
+    show_password = false
+    show_confirm_password = false
 
     forgotPassword = new FormGroup({
         email : new FormControl('ganeshkoushik@gmail.com',[Validators.required]),
@@ -34,15 +35,6 @@ export class ResetPasswordComponent implements OnInit {
 
     onSubmit(){
         this.router.navigate([''])
-    }
-
-    matchPassword(){
-        if (this.password != this.confirmPassword && this.confirmPassword.valid) {
-            this.password_incorrect = true;
-        } 
-        if(this.password == this.confirmPassword) {
-            this.password_incorrect = false;
-        }
     }
 
   ngOnInit(): void {
