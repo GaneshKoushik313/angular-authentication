@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http'
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { NgOtpInputModule } from  'ng-otp-input';
 import { AppRoutingModule } from './app-routing.module';
@@ -85,7 +86,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

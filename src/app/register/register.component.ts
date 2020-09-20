@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
 import {Router} from '@angular/router'
+import { RegisterService } from '../register.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-register',
@@ -9,24 +11,24 @@ import {Router} from '@angular/router'
 })
 export class RegisterComponent implements OnInit {
 
-    constructor(private router:Router) { }
+    constructor(private router:Router,private userData:RegisterService) { }
 
     show = false
 
     registerForm = new FormGroup({
-        firstName: new FormControl('',[Validators.required]),
-        lastName: new FormControl('',[Validators.required]),
+        first_name: new FormControl('',[Validators.required]),
+        last_name: new FormControl('',[Validators.required]),
         email: new FormControl('',[Validators.required,Validators.email]),
         phone: new FormControl('',[Validators.required]),
         password: new FormControl('',[Validators.required])
     })
 
-    get firstName(){
-        return this.registerForm.get('firstName')
+    get first_name(){
+        return this.registerForm.get('first_name')
     }
 
-    get lastName(){
-        return this.registerForm.get('lastName')
+    get last_name(){
+        return this.registerForm.get('last_name')
     }
 
     get email(){
@@ -41,11 +43,34 @@ export class RegisterComponent implements OnInit {
         return this.registerForm.get('password')
     }
 
-  onSubmit(){
-      this.router.navigate(['otp'])
-  }
+    async onSubmit(){
+        try{
+            this.userData.saveUser(this.registerForm.value).subscribe((response)=>{
+                console.log(response)
+                try{
+                    Swal.fire({
+                        icon: 'success',
+                        text: 'User Saved Successfully',
+                    })
+                }
+                catch(error){
+                    Swal.fire({
+                        icon: 'error',
+                        text: 'User Registration Failed',
+                    })
+                }
+            })
+        }
+        catch(error){
+            Swal.fire({
+                icon: 'error',
+                text: 'User Registration Failed',
+            })
+        }
+    //   this.router.navigate([''])
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }

@@ -3,14 +3,14 @@
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <h2>Register</h2>
             <mat-form-field class="full-width-input">
-                <input required type="text" matInput placeholder="First Name" formControlName="firstName">
-                <mat-error *ngIf="firstName.invalid && firstName.touched">
+                <input required type="text" matInput placeholder="First Name" formControlName="first_name">
+                <mat-error *ngIf="first_name.invalid && first_name.touched">
                     First Name is Required
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width-input mt-3">
-                <input required type="text" matInput placeholder="Last Name" formControlName="lastName">
-                <mat-error *ngIf="lastName.invalid && lastName.touched">
+                <input required type="text" matInput placeholder="Last Name" formControlName="last_name">
+                <mat-error *ngIf="last_name.invalid && last_name.touched">
                     Last Name is Required
                 </mat-error>
             </mat-form-field>
