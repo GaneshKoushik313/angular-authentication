@@ -11,6 +11,8 @@ export class RegisterComponent implements OnInit {
 
     constructor(private router:Router) { }
 
+    show = false
+
     registerForm = new FormGroup({
         firstName: new FormControl('',[Validators.required]),
         lastName: new FormControl('',[Validators.required]),
