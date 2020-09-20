@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,6 +11,8 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 export class ResetPasswordComponent implements OnInit {
 
     constructor(private router: Router) { }
+
+    password_incorrect = false
 
     forgotPassword = new FormGroup({
         email : new FormControl('ganeshkoushik@gmail.com',[Validators.required]),
@@ -31,6 +34,15 @@ export class ResetPasswordComponent implements OnInit {
 
     onSubmit(){
         this.router.navigate([''])
+    }
+
+    matchPassword(){
+        if (this.password != this.confirmPassword && this.confirmPassword.valid) {
+            this.password_incorrect = true;
+        } 
+        if(this.password == this.confirmPassword) {
+            this.password_incorrect = false;
+        }
     }
 
   ngOnInit(): void {

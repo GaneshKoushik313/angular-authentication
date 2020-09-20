@@ -9,9 +9,11 @@ import {Router} from '@angular/router'
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private router:Router) { }
-
     showEmail = false
+    show:boolean = false
+
+    constructor(private router:Router) {
+     }
 
     loginForm = new FormGroup({
         username: new FormControl('',[Validators.required,Validators.email]),
@@ -33,6 +35,10 @@ export class LoginComponent implements OnInit {
         else{
             this.router.navigate(['reset-password'])
         }
+    }
+
+    showPassword(){
+        this.show = !this.show;
     }
 
     onSubmit(){

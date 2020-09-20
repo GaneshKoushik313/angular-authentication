@@ -12,7 +12,8 @@
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width-input mt-3">
-                <input matInput type="password" placeholder="Password" formControlName="password" required>
+                <mat-icon class="icon_placement" (click)="showPassword()">remove_red_eye</mat-icon>
+                <input matInput [type]="show ? 'text' : 'password'" placeholder="Password" formControlName="password" required>
                 <mat-error *ngIf="password.invalid && password.touched">
                     Please Provide a Valid Password
                 </mat-error>

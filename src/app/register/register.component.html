@@ -1,4 +1,4 @@
-<mat-card class="mt-35">
+<mat-card class="mt-25">
     <mat-card-content>
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <h2>Register</h2>
@@ -26,10 +26,16 @@
                     Phone Number is Required
                 </mat-error>
             </mat-form-field>
+            <mat-form-field class="full-width-input mt-3">
+                <input required type="password" matInput placeholder="Password" formControlName="password">
+                <mat-error *ngIf="password.invalid && password.touched">
+                    Password is Required
+                </mat-error>
+            </mat-form-field>
             <button mat-raised-button [disabled]="registerForm.invalid" class="mt-6" color="primary">Register</button>
             <div class="d-flex justify-content-center mt-2">
                 <a class="d-block text-center">Already have an Account?</a>
-                <a routerLink="login" class="pointer text-dark-purple ml-2 fw-500">Login</a>
+                <a routerLink="" class="pointer text-dark-purple ml-2 fw-500">Login</a>
             </div>
         </form>
     </mat-card-content>
