@@ -1,3 +1,6 @@
+Angular Authentitcation is a project related to Login and Registration of User. This Project is developed using Angular, HTML5, CSS3, Bootstrap and Angular Material in Front End Part of an Application. NodeJS, ExpressJS is used as a Backend Part of an Application. MongoDB is used as a Database part of an Application.
+
+
 # AngularAuthentication
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
