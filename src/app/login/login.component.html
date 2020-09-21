@@ -6,8 +6,8 @@
                 Please Enter Email to Reset Password
             </mat-error>
             <mat-form-field class="full-width-input">
-                <input matInput placeholder="Email" type="email" (ngModelChange)="showEmail = false" formControlName="username" required>
-                <mat-error *ngIf="username.invalid && username.touched">
+                <input matInput placeholder="Email" type="email" (ngModelChange)="showEmail = false" formControlName="email" required>
+                <mat-error *ngIf="email.invalid && email.touched">
                     Please Provide a Valid Email Address
                 </mat-error>
             </mat-form-field>

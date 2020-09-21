@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
 import {Router} from '@angular/router'
+import { RegisterService } from '../register.service';
 
 @Component({
     selector: 'app-login',
@@ -12,16 +13,16 @@ export class LoginComponent implements OnInit {
     showEmail = false
     show:boolean = false
 
-    constructor(private router:Router) {
+    constructor(private router:Router, private userData: RegisterService) {
      }
 
     loginForm = new FormGroup({
-        username: new FormControl('',[Validators.required,Validators.email]),
-        password: new FormControl('',[Validators.required])
+        email: new FormControl('',[Validators.required,Validators.email]),
+        password: new FormControl('',[Validators.required,Validators.minLength(6)])
     })
 
-    get username(){
-        return this.loginForm.get('username')
+    get email(){
+        return this.loginForm.get('email')
     }
 
     get password(){
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
     }
 
     forgotPassword(){
-        if(this.username.invalid){
+        if(this.email.invalid){
             this.showEmail = true
         }
         else{
@@ -42,7 +43,9 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(){
-
+        this.userData.loginUser(this.loginForm.value).subscribe((response)=> {
+            console.log(response)
+        })
     }
 
     ngOnInit(): void {

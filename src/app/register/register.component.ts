@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
         last_name: new FormControl('',[Validators.required]),
         email: new FormControl('',[Validators.required,Validators.email]),
         phone: new FormControl('',[Validators.required]),
-        password: new FormControl('',[Validators.required])
+        password: new FormControl('',[Validators.required,Validators.minLength(6)])
     })
 
     get first_name(){
@@ -52,6 +52,9 @@ export class RegisterComponent implements OnInit {
                         icon: 'success',
                         text: 'User Saved Successfully',
                     })
+                    setTimeout(() => {
+                        this.router.navigate([''])
+                    }, 2000);
                 }
                 catch(error){
                     Swal.fire({
@@ -67,7 +70,6 @@ export class RegisterComponent implements OnInit {
                 text: 'User Registration Failed',
             })
         }
-    //   this.router.navigate([''])
     }
 
     ngOnInit(): void {

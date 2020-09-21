@@ -13,4 +13,7 @@ export class RegisterService {
     saveUser(data){
         return this.http.post(this.url+'/users/register',data)
     }
+    loginUser(data){
+        return this.http.post(this.url+'/users/login',data)
+    }
 }
