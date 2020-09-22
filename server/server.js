@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
 
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors({origin: 'http://gklogin.gearhostpreview.com/'}));
 app.use('/api',userRoute);
 
 //ROUTES

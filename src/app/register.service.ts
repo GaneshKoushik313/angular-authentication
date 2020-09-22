@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http'
     providedIn: 'root'
 })
 export class RegisterService {
-    url = "http://localhost:5000/api"
+    url = "http://gklogin.gearhostpreview.com/api"
     constructor(private http:HttpClient) { 
 
     }
