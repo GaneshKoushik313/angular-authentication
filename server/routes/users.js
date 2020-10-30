@@ -4,6 +4,7 @@ const {check,validationResult} = require("express-validator");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 const User = require('../models/Users');
+const sgSendmail = require('sendgrid-mail')
 
 router.get('/users', async (req, res) => {
     try{
@@ -27,9 +28,17 @@ router.post('/users/register', async (req,res) => {
     try{
         const savedUser = await user.save();
         // res.json(savedUser);
+        sgSendmail({
+            // Required SendGrid API key
+            apikey: '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',
+          
+            // Optional to/cc/bcc fields.
+            // Specify at least one email address in any of these fields.
+            to: ['ganeshkoushik313@gmail.com']
+        }) 
         return res.status(200).json({
             message: "User Registered Successfully"
-        });
+        });   
 
     }catch(err){
         return res.status(400).json({

@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
+const sgSendmail = require('sendgrid-mail')
 require('dotenv/config');
 var cors = require('cors');
 
@@ -29,8 +30,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
-
-app.use(cors({origin: 'http://gklogin.gearhostpreview.com/'}));
+app.use(express.static(path.join(__dirname,'../dist/index.html')))
+app.use(cors({origin: 'https://angular-project-44a55.firebaseapp.com'}));
 app.use('/api',userRoute);
 
 //ROUTES
